@@ -92,16 +92,3 @@ agent = create_agent(
     # checkpointer=InMemorySaver(),
     tools=[search_web, lookup_link]
 )
-    
-
-
-if __name__ == "__main__":
-    from googlesearch import search
-    
-    results = search("Necromancer Diablo IV")
-    print(results)
-    
-    for index, search_result in enumerate(results):
-        print(f"Search result {index}")
-        print("\tSearch result title: ", search_result.title)
-        print("\tSearch result link: ", search_result.url)
