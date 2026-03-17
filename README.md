@@ -1,3 +1,7 @@
+<center>
+    <img src="assets/bot.png" alt="Generated image of a chief bot inspired by Yevhen Klopotenko." width="200">
+</center>
+
 # Klopotenko Telegram Bot 👨‍🍳🇺🇦
 A Telegram bot that brings the culinary world of Yevhen Klopotenko—one of Ukraine's most famous chefs—directly to your chat. This bot helps users discover authentic and modern Ukrainian recipes, improve their cooking skills, and explore the "Cult Food" philosophy.
 
