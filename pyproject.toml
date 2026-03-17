@@ -1,7 +1,7 @@
 [project]
-name = "langchain-agent"
+name = "klopotenko-bot"
 version = "0.1.0"
-description = "Add your description here"
+description = "Bot that helps searching for recipes of a legendary Ukrainian Chief."
 readme = "README.md"
 requires-python = ">=3.13"
 dependencies = [

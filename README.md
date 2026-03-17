@@ -50,12 +50,22 @@ Press `/start` to see the main menu.
 Simply type ingredients (e.g., "beetroot") to get suggestions of a recipes.
 
 # 🏗 Project Structure
-Plaintext
-├── bot.py             # Main entry point for the bot
-├── config.py          # Configuration and environment variables
-├── handlers/          # Message and command handlers
-├── utils/             # Helper functions and API wrappers
-└── requirements.txt   # Project dependencies
+```
+.
+├── README.md
+├── chef.py
+├── langgraph.json
+├── pyproject.toml
+├── src
+│   ├── condenser               # Utility functions designed for reduction of webpage content.
+│   │   ├── __init__.py
+│   │   ├── base.py
+│   │   ├── html.py
+│   │   └── md.py
+│   ├── context.py              # Context
+│   └── tools.py                # Tools available for use by AI
+└── uv.lock
+```
 
 # 👨‍💻 Author
 Ihor Kostiuk - Machine Learning Engineer
