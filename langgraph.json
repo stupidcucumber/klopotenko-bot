@@ -3,5 +3,5 @@
   "graphs": {
     "agent": "./chef.py:agent"
   },
-  "env": ".env"
+  "env": ".venv"
 }

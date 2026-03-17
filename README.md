@@ -34,13 +34,12 @@ cd klopotenko-bot
 
 Install dependencies:
 ```sh
-pip install -r requirements.txt
-Environment Setup:
+uv sync
 ```
 
 Create a .env file in the root directory and add your credentials using .env example file. And run the bot:
 ```sh
-python bot.py
+uv run chef.py
 ```
 
 # 📖 Usage
@@ -48,7 +47,7 @@ Open Telegram and search for your bot.
 
 Press `/start` to see the main menu.
 
-Use commands like `/recipe` or simply type an ingredient (e.g., "beetroot") to get suggestions.
+Simply type ingredients (e.g., "beetroot") to get suggestions of a recipes.
 
 # 🏗 Project Structure
 Plaintext
