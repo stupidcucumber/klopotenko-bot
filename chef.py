@@ -1,6 +1,8 @@
 from langchain_google_genai.chat_models import ChatGoogleGenerativeAI
 from langchain.agents import create_agent
 from langchain.messages import HumanMessage
+from langchain_core.output_parsers import StrOutputParser
+from langgraph.checkpoint.memory import InMemorySaver
 from tavily import AsyncTavilyClient
 from httpx import AsyncClient
 from dotenv import load_dotenv
@@ -37,9 +39,10 @@ Instructions you provide must be clear, include all ingredients and estimate for
 
 
 agent = create_agent(
-    model=ChatGoogleGenerativeAI(model="gemini-2.5-flash"), 
+    model=ChatGoogleGenerativeAI(model="gemini-2.5-flash-lite"), 
     system_prompt=SYSTEM_PROMPT,
-    tools=[search_web, lookup_link]
+    tools=[search_web, lookup_link],
+    checkpointer=InMemorySaver()
 )
 
 
@@ -68,15 +71,20 @@ _⚠️ Важливо: Це фанатський інструмент, ство
 async def respond_to_message(message: Message) -> None:
     logging.info(f"Received message from the user {message.from_user.username}: {message.text}")
 
+    parser = StrOutputParser()
     response = await agent.ainvoke(
         {
             "messages": [HumanMessage(message.text)]
         }, 
-        context=current_runtime_context
+        context=current_runtime_context,
+        config={"configurable": {"thread_id": f"{message.from_user.id}"}}
     )
-    logging.info(f"Response from the agent: {response}")
+
+    agent_text = await parser.ainvoke(response["messages"][-1])
+
+    logging.info(f"Response from the agent: {agent_text}")
     
-    await message.answer(text=response["messages"][-1].content[0]["text"], parse_mode=ParseMode.MARKDOWN)
+    await message.answer(text=agent_text, parse_mode=ParseMode.MARKDOWN)
 
 
 async def main() -> None:
